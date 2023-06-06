@@ -2,22 +2,22 @@ class Review:
     
     all = []
     
-    def __init__(self, stars, game, customer):
-        self.stars = stars
+    def __init__(self, rating, game, customer):
+        self.rating = rating
         self.game = game
         self.customer = customer
         type(self).all.append(self)
 
     @property
-    def stars(self):
-        return self._stars
+    def rating(self):
+        return self._rating
     
-    @stars.setter
-    def stars(self, stars):
-        if isinstance(stars, int) and 1 <= stars <= 5:
-            self._stars = stars
+    @rating.setter
+    def rating(self, rating):
+        if isinstance(rating, int) and 1 <= rating <= 10:
+            self._rating = rating
         else:
-            raise AttributeError('The rating must be an integer between 1 and 5')
+            raise AttributeError('The rating must be an integer between 1 and 10')
             
     @property
     def game(self):
