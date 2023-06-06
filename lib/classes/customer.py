@@ -1,10 +1,10 @@
 class Customer:
     all = []
-    username_list = []
-    def __init__(self, first_name, last_name, username) -> None:
+    def __init__(self, first_name, last_name, username, customer_id = None):
         self.first_name = first_name
         self.last_name = last_name
         self.username = username
+        # self.id = id
         type(self).all.append(self)
     
     @property
@@ -43,7 +43,15 @@ class Customer:
                 self._username = new_username          
         else:
             raise TypeError('This username has been taken, please choose another one.')
-            
+    
+    @classmethod
+    def find_by_username(cls, username):
+        CONN.excute("""
+           SELECT * FROM customers
+           WHERE username == ?
+        """, (username,))
+        row = CONN.fetchone()
+        return Customer(row[1], row[2], row[3], row[0]) if row else None
 #     def game_list(self):
 #         game_list = []
 #         for transaction in Transaction.all:

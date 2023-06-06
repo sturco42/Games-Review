@@ -2,6 +2,7 @@ from classes.game import Game
 from classes.customer import Customer
 from classes.review import Review
 from classes.__init__ import CONN, CURSOR
+from simple_chalk import chalk, bold, underline
 
 import time
 
@@ -18,49 +19,53 @@ from helpers import (
 def main():
     welcome()
 
-    choice = 0
-    while choice != 9:
-        time.sleep(5)
-        print("""
+    # choice = 0
+    while True :#choice != 0: 
+        time.sleep(3)
+        print(underline(chalk.yellow("""
             Please type in the number corresponding to the choice.
-            ______________________________________________________
-        """)
+        """)))
         menu()
-        choice = int(input())
+        choice = input()
 
-        if choice == 1:
-            print('')
-            for game in Game.all:
-                print(game)
+        if choice == '1':
+            print('working on ...')
+            # for game in Game.all:
+            #     print(game)
 
-        if choice == 2:
+        if choice == '2':
             find_by_name()
 
-        if choice == 3:
+        if choice == '3':
             print('working on ...')
 
-        if choice == 4:
+        if choice == '4':
             print('working on ...')
 
-        if choice == 5:
+        if choice == '5':
             print('working on ...')
 
-        if choice == 6:
+        if choice == '6':
             review_tab()
-            if choice == 1:
+            choice_2 = input()
+            if choice_2 == '1':
                 login()
-                if choice == 1:
+                choice_3 = input()
+                if choice_3 == '1':
                     exiting_customer()
-                if choice == 2:
+                if choice_3 == '2':
                     create_customer()
-                if choice == 3:
+                if choice_3 == '3':
                     review_tab()
                 else:
                     print('Please type vaild number.')
-            if choice == 2:
+            if choice_2 == '2':
                 menu()
             else:
                 print('Please type vaild number.')
+        if choice == '7':
+            print("See you next time!")
+            break
         else:
             print('Please type vaild number.')
 

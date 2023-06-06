@@ -37,5 +37,5 @@ class Review:
             raise TypeError('customer must be of the type Customer')
         self._customer = customer
 
-from customer import Customer
-from game import Game
+from .customer import Customer
+from .game import Game
