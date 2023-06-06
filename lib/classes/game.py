@@ -1,5 +1,5 @@
 class Game:
-    
+
     def __init__(self, title, publisher, year):
         self.title = title
         self.publisher = publisher
