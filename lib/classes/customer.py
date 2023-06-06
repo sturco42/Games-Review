@@ -44,13 +44,12 @@ class Customer:
         else:
             raise TypeError('This username has been taken, please choose another one.')
             
-        
-    def game_list(self):
-        game_list = []
-        for transaction in Transaction.all:
-            if transaction.game not in game_list:
-                game_list.append(transaction.game)
-        return game_list
+#     def game_list(self):
+#         game_list = []
+#         for transaction in Transaction.all:
+#             if transaction.game not in game_list:
+#                 game_list.append(transaction.game)
+#         return game_list
     
 
-from .transaction import Transaction
+# from .transaction import Transaction

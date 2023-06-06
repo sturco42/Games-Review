@@ -2,7 +2,6 @@
 import ipdb
 
 from classes.game import Game
-from classes.transaction import Transaction 
 from classes.customer import Customer
 from classes.review import Review
 
@@ -16,11 +15,10 @@ c1 = Customer('John', 'Smith', 'Gamer NO.1')
 # c4 = Customer('John', 'Smith', 's') #=> TypeError: This username has been taken, please choose another one.
 
 #Transaction
-# t1 = Transaction(g1, c1)
 
 
 #Review
-# r1 = Review(2, 'Call of Duty: Warzone', c1)
+# r1 = Review(2, g1, c1)
 
 
 if __name__ == '__main__':
