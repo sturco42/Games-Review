@@ -1,6 +1,9 @@
 class Customer:
+
     all = []
+    
     username_list = []
+    
     def __init__(self, first_name, last_name, username) -> None:
         self.first_name = first_name
         self.last_name = last_name
@@ -51,6 +54,5 @@ class Customer:
             if transaction.game not in game_list:
                 game_list.append(transaction.game)
         return game_list
-    
 
 from .transaction import Transaction

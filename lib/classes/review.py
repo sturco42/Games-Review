@@ -14,8 +14,10 @@ class Review:
     
     @stars.setter
     def stars(self, stars):
-        if isinstance(stars, int) and 1 <= len(stars) <= 5:
+        if isinstance(stars, int) and 1 <= stars <= 5:
             self._stars = stars
+        else:
+            raise AttributeError('The rating must be an integer between 1 and 5')
             
     @property
     def game(self):
@@ -24,7 +26,7 @@ class Review:
     @game.setter
     def game(self, game):
         if not isinstance(game, Game):
-            raise TypeError('game must be of the type Game')
+            raise TypeError('The game must be of the type Game.')
         self._game = game
     
     @property
@@ -34,5 +36,8 @@ class Review:
     @customer.setter
     def customer(self, customer):
         if not isinstance(customer, Customer):
-            raise TypeError('customer must be of the type Customer')
+            raise TypeError('The customer must be of the type Customer')
         self._customer = customer
+        
+from classes.customer import Customer
+from classes.game import Game
