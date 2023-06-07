@@ -1,3 +1,5 @@
+from .__init__ import CONN, CURSOR
+
 class Customer:
     all = []
     def __init__(self, first_name, last_name, username, customer_id = None):
@@ -35,18 +37,33 @@ class Customer:
     
     @username.setter
     def username(self, new_username):
-        if new_username not in type(self).username_list:
+        username_list = [customer.username for customer in type(self).all]
+        if new_username not in username_list:
             if 1 >= len(new_username) or len(new_username) >= 30:
                 raise TypeError('The username must be a string between 1 to 30 characters.')
             else: 
-                type(self).username_list.append(new_username)
+                username_list.append(new_username)
                 self._username = new_username          
         else:
             raise TypeError('This username has been taken, please choose another one.')
-    
+        
+    def save(self):
+        CURSOR.execute("""
+            INSERT INTO customers (first_name, last_name, username)
+            VALUES ( ?, ?, ?)
+        """, (self.first_name, self.last_name, self.username))
+        CONN.commit()
+        self.id = CURSOR.lastrowid
+
+    @classmethod
+    def create_customer(cls, first_name, last_name, username):
+        new_customer = cls(first_name, last_name, username)
+        new_customer.save()
+        return new_customer
+
     @classmethod
     def find_by_username(cls, username):
-        CONN.excute("""
+        CONN.execute("""
            SELECT * FROM customers
            WHERE username == ?
         """, (username,))

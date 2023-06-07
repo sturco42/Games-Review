@@ -39,7 +39,7 @@ def create_customer():
     last_name = input(chalk.yellow('Please enter your last name: '))
     username = input(chalk.yellow('Please enter your username: '))
     try:
-        customer = Customer.create(first_name, last_name, username)
+        customer = Customer.create_customer(first_name, last_name, username)
         print(customer)
     except Exception as e:
         print('Failed to create customer: ', e)

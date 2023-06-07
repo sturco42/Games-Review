@@ -22,9 +22,6 @@ def main():
     # choice = 0
     while True :#choice != 0: 
         time.sleep(3)
-        print(underline(chalk.yellow("""
-            Please type in the number corresponding to the choice.
-        """)))
         menu()
         choice = input()
 
