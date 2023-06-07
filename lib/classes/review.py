@@ -1,12 +1,9 @@
 class Review:
     
-    all = []
-    
-    def __init__(self, rating, game, customer):
+    def __init__(self, rating, game, user):
         self.rating = rating
         self.game = game
-        self.customer = customer
-        type(self).all.append(self)
+        self.user = user
 
     @property
     def rating(self):
@@ -17,7 +14,7 @@ class Review:
         if isinstance(rating, int) and 1 <= rating <= 10:
             self._rating = rating
         else:
-            raise AttributeError('The rating must be an integer between 1 and 10')
+            raise Exception('The rating must be an integer between 1 and 10')
             
     @property
     def game(self):
@@ -26,18 +23,18 @@ class Review:
     @game.setter
     def game(self, game):
         if not isinstance(game, Game):
-            raise TypeError('The game must be of the type Game.')
+            raise Exception('The game must have the correctly associeted attribute!.')
         self._game = game
     
     @property
-    def customer(self):
-        return self._customer
+    def user(self):
+        return self._user
     
-    @customer.setter
-    def customer(self, customer):
-        if not isinstance(customer, Customer):
-            raise TypeError('customer must be of the type Customer')
-        self._customer = customer
+    @user.setter
+    def user(self, user):
+        if not isinstance(user, User):
+            raise Exception('The user must have the correctly associated attribute!')
+        self._user = user
 
-from .customer import Customer
-from .game import Game
+from classes.user import User
+from classes.game import Game

@@ -1,7 +1,7 @@
 import re
 from simple_chalk import chalk, bold, underline
 from classes.game import Game
-from classes.customer import Customer
+from lib.classes.user import Customer
 from classes.review import Review
 
 def welcome():
