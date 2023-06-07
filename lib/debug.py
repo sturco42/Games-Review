@@ -5,12 +5,16 @@ from classes.customer import Customer
 
 import ipdb
 
-customer = Customer('Matteo', 'Pat')
-game1 = Game('title', 'publi', 2000)
+import sqlite3
+CONN = sqlite3.connect('database.db')
+CURSOR = CONN.cursor()
 
-review1 = Review(3, game1, customer)
-review2 = Review(5, game1, customer)
-print(game1.average_score())
+# customer = Customer('Matteo', 'Pat', )
+# game1 = Game('title', 'publi', 2000)
+
+# review1 = Review(3, game1, customer)
+# review2 = Review(5, game1, customer)
+# print(game1.average_score())
 
 #!/usr/bin/env python3
 import ipdb
@@ -33,7 +37,8 @@ c1 = Customer('John', 'Smith', 'Gamer NO.1')
 
 #Review
 # r1 = Review(2, g1, c1)
-
+Customer.create_table()
+Customer.drop_table()
 
 if __name__ == '__main__':
     print("HELLO! :) let's debug")

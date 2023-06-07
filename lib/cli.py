@@ -26,12 +26,19 @@ def main():
         choice = input()
 
         if choice == '1':
-            print('working on ...')
-            # for game in Game.all:
-            #     print(game)
+            print(' Id    Title    Publisher    Year')
+            for game in Game.all():
+                print(game)
 
         if choice == '2':
-            find_by_name()
+            title = input(chalk.yellow('Please enter the game title: '))
+            game = Game.find_by_title(title)
+            print(f"""
+                Title: {game.title}
+                Publisher: {game.publisher}
+                Year: {game.year}
+                Ave Rating: {game.ave_rating}
+            """)
 
         if choice == '3':
             print('working on ...')
@@ -55,16 +62,16 @@ def main():
                 if choice_3 == '3':
                     review_tab()
                 else:
-                    print('Please type vaild number.')
+                    print(bold(chalk.red('Please type vaild number.')))
             if choice_2 == '2':
                 menu()
             else:
-                print('Please type vaild number.')
+                print(bold(chalk.red('Please type vaild number.')))
         if choice == '7':
             print("See you next time!")
             break
         else:
-            print('Please type vaild number.')
+            print(bold(chalk.red('Please type vaild number.')))
 
 
         

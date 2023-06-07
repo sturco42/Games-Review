@@ -48,7 +48,26 @@ class Customer:
                 self._username = new_username          
         else:
             raise TypeError('This username has been taken, please choose another one.')
-        
+    
+    @classmethod
+    def create_table(cls):
+        CURSOR.execute("""
+            CREATE TABLE IF NOT EXISTS customers(
+                id INTEGER PRIMARY KEY,
+                first_name TEXT,
+                last_name TEXT,
+                username TEXT
+            )
+        """)
+        CONN.commit()
+
+    @classmethod
+    def drop_table(cls):
+        CURSOR.execute("""
+            DROP TABLE IF EXISTS customers
+        """)
+        CONN.commit()   
+
     def save(self):
         CURSOR.execute("""
             INSERT INTO customers (first_name, last_name, username)

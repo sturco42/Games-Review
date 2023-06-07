@@ -23,16 +23,16 @@ def review_tab():
     print(underline(chalk.yellow("""
     Please type in the number corresponding to the choice.
     """)))
-    print('1. Add Review')
-    print('2. Back')
+    print(chalk.green('1. Add Review'))
+    print(chalk.green('2. Back'))
 
 def login():
-    print(chalk.yellow("""
+    print(underline(chalk.yellow("""
     Please login in to add a review.
-    """))
-    print('1. Exiting Customer')
-    print('2. New Customer')
-    print('3. Back')
+    """)))
+    print(chalk.green('1. Exiting Customer'))
+    print(chalk.green('2. New Customer'))
+    print(chalk.green('3. Back'))
 
 def create_customer():
     first_name = input(chalk.yellow('Please enter your first name: '))
@@ -42,13 +42,13 @@ def create_customer():
         customer = Customer.create_customer(first_name, last_name, username)
         print(customer)
     except Exception as e:
-        print('Failed to create customer: ', e)
+        print(bold(chalk.red('Failed to create customer: ')), e)
     
 
 def exiting_customer():
     username = input(chalk.yellow('Please enter your username: '))
     customer = Customer.find_by_username(username)
-    print(customer) if customer else print('No customer found')
+    print(customer) if customer else print(bold(chalk.red('No customer found')))
 
 def find_by_name():
     name = input(chalk.yellow('Please type the game name.'))
