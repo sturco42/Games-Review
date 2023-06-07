@@ -70,6 +70,6 @@ class Game:
         return [cls(row[1], row[2], row[3], row[4], row[0]) for row in rows]      
 
 
-from classes.customer import Customer
+from classes.user import User
 from classes.review import Review
 from statistics import mean

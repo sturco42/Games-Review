@@ -1,5 +1,5 @@
 from classes.game import Game
-from lib.classes.user import Customer
+from classes.user import User
 from classes.review import Review
 from classes.__init__ import CONN, CURSOR
 from simple_chalk import chalk, bold, underline
@@ -11,8 +11,8 @@ from helpers import (
     menu,
     review_tab,
     login,
-    create_customer,
-    exiting_customer,
+    create_user,
+    exiting_user,
     find_by_name,
 )
 
@@ -53,9 +53,9 @@ def main():
                 login()
                 choice_3 = input()
                 if choice_3 == '1':
-                    exiting_customer()
+                    exiting_user()
                 if choice_3 == '2':
-                    create_customer()
+                    create_user()
                 if choice_3 == '3':
                     review_tab()
                     #Trying to avoid previous input...
