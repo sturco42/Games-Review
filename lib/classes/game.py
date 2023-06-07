@@ -48,7 +48,7 @@ class Game:
         CURSOR.execute("""
             SELECT * FROM games;
         """)
-        rows = CURSOR.fetchall()
+        rows = CURSOR.fetchall();
         return [cls(row[1], row[2], row[3], row[4], row[0]) for row in rows]
         
     @classmethod
