@@ -1,8 +1,10 @@
 from .__init__ import CONN, CURSOR
 
 class Customer:
+
     all = []
     def __init__(self, first_name, last_name, username, customer_id = None):
+
         self.first_name = first_name
         self.last_name = last_name
         self.username = username
@@ -69,12 +71,4 @@ class Customer:
         """, (username,))
         row = CONN.fetchone()
         return Customer(row[1], row[2], row[3], row[0]) if row else None
-#     def game_list(self):
-#         game_list = []
-#         for transaction in Transaction.all:
-#             if transaction.game not in game_list:
-#                 game_list.append(transaction.game)
-#         return game_list
-    
 
-# from .transaction import Transaction
