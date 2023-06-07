@@ -1,5 +1,5 @@
 from classes.game import Game
-from classes.customer import Customer
+from lib.classes.user import Customer
 from classes.review import Review
 from classes.__init__ import CONN, CURSOR
 from simple_chalk import chalk, bold, underline

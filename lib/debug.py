@@ -1,7 +1,7 @@
 
 from classes.review import Review
 from classes.game import Game
-from classes.customer import Customer
+from lib.classes.user import Customer
 
 import ipdb
 
@@ -20,7 +20,7 @@ CURSOR = CONN.cursor()
 import ipdb
 
 from classes.game import Game
-from classes.customer import Customer
+from lib.classes.user import Customer
 from classes.review import Review
 
 #Game
