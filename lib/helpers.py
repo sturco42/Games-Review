@@ -1,7 +1,7 @@
 import re
 from simple_chalk import chalk, bold, underline
 from classes.game import Game
-from lib.classes.user import Customer
+from classes.user import User
 from classes.review import Review
 
 def welcome():
@@ -29,25 +29,24 @@ def login():
     print(underline(chalk.yellow("""
     Please login in to add a review.
     """)))
-    print(chalk.green('1. Exiting Customer'))
-    print(chalk.green('2. New Customer'))
+    print(chalk.green('1. Exiting User'))
+    print(chalk.green('2. New User'))
     print(chalk.green('3. Back'))
 
-def create_customer():
+def create_user():
     first_name = input(chalk.yellow('Please enter your first name: '))
     last_name = input(chalk.yellow('Please enter your last name: '))
-    username = input(chalk.yellow('Please enter your username: '))
     try:
-        customer = Customer.create_customer(first_name, last_name, username)
-        print(customer)
+        user = User.create_user(first_name, last_name)
+        print(user)
     except Exception as e:
-        print(bold(chalk.red('Failed to create customer: ')), e)
+        print(bold(chalk.red('Failed to create user: ')), e)
     
-
-def exiting_customer():
-    username = input(chalk.yellow('Please enter your username: '))
-    customer = Customer.find_by_username(username)
-    print(customer) if customer else print(bold(chalk.red('No customer found')))
+def exiting_user():
+    first_name = input(chalk.yellow('Please enter your first name: '))
+    last_name = input(chalk.yellow('Please enter your last name: '))
+    user = User.find_by_user(first_name, last_name)
+    print(user) if user else print(bold(chalk.red('No user found')))
 
 def find_by_name():
     name = input(chalk.yellow('Please type the game name.'))

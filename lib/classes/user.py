@@ -2,12 +2,9 @@ from . import CONN, CURSOR
 
 class User:
 
-    def __init__(self, first_name, last_name, username, id):
-
+    def __init__(self, first_name, last_name):
         self.first_name = first_name
         self.last_name = last_name
-        self.username = username
-        self.id = id
 
     @property
     def first_name(self):
@@ -34,39 +31,28 @@ class User:
     @property
     def username(self):
         return self._username
-    
-    @username.setter
-    def username(self, new_username):
-        username_list = [user.username for user in type(self).all]
-        if new_username not in username_list:
-            if 1 >= len(new_username) or len(new_username) >= 30:
-                raise Exception('The username must be a string between 1 to 30 characters.')
-            else: 
-                username_list.append(new_username)
-                self._username = new_username          
-        else:
-            raise Exception('This username has been taken, please choose another one.')
-        
+            
     def save(self):
         CURSOR.execute("""
-            INSERT INTO users (first_name, last_name, username)
-            VALUES ( ?, ?, ?)
-        """, (self.first_name, self.last_name, self.username))
+            INSERT INTO users (first_name, last_name)
+            VALUES ( ?, ?)
+        """, (self.first_name, self.last_name))
         CONN.commit()
         self.id = CURSOR.lastrowid
 
     @classmethod
-    def create_user(cls, first_name, last_name, username):
-        new_user = cls(first_name, last_name, username)
+    def create_user(cls, first_name, last_name):
+        new_user = cls(first_name, last_name)
         new_user.save()
         return new_user
 
     @classmethod
-    def find_by_username(cls, username):
+    def find_by_user(cls, first_name, last_name):
         CONN.execute("""
            SELECT * FROM users
-           WHERE username == ?
-        """, (username,))
+           WHERE first_name == ?
+           WHERE last_name == ?
+        """, (first_name, last_name, ))
         row = CONN.fetchone()
-        return User(row[1], row[2], row[3], row[0]) if row else None
+        return User(row[1], row[2], row[0]) if row else None
 
