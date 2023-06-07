@@ -14,10 +14,9 @@ def menu():
     print(chalk.green('1. All Games'))
     print(chalk.green("2. Find Games by Game's name"))
     print(chalk.green('3. Find Games by Genres'))
-    print(chalk.green('4. Top 10 Games'))
-    print(chalk.green('5. New Games for 2023'))
-    print(chalk.green('6. Add Review to Game'))
-    print(chalk.green('7. Done'))
+    print(chalk.green('4. New Games for 2023'))
+    print(chalk.green('5. Add Review to Game'))
+    print(chalk.green('6. Done'))
 
 def review_tab():
     print(underline(chalk.yellow("""

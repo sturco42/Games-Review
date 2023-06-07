@@ -60,6 +60,15 @@ class Game:
         row = CURSOR.fetchone()
         return cls(row[1], row[2], row[3], row[4], row[0]) if row else None       
 
+    @classmethod
+    def find_by_year(cls, year):
+        CURSOR.execute("""
+            SELECT * FROM games
+            WHERE year is ?;
+        """, (year, ))
+        rows = CURSOR.fetchone()
+        return [cls(row[1], row[2], row[3], row[4], row[0]) for row in rows]      
+
 
 from classes.customer import Customer
 from classes.review import Review

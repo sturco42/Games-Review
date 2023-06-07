@@ -21,7 +21,7 @@ def main():
 
     # choice = 0
     while True :#choice != 0: 
-        time.sleep(3)
+        time.sleep(2)
         menu()
         choice = input()
 
@@ -47,9 +47,6 @@ def main():
             print('working on ...')
 
         if choice == '5':
-            print('working on ...')
-
-        if choice == '6':
             review_tab()
             choice_2 = input()
             if choice_2 == '1':
@@ -61,13 +58,17 @@ def main():
                     create_customer()
                 if choice_3 == '3':
                     review_tab()
+                    #Trying to avoid previous input...
+                    #break
                 else:
                     print(bold(chalk.red('Please type vaild number.')))
             if choice_2 == '2':
                 menu()
+                #Trying to avoid previous input...
+                #break
             else:
                 print(bold(chalk.red('Please type vaild number.')))
-        if choice == '7':
+        if choice == '6':
             print("See you next time!")
             break
         else:
