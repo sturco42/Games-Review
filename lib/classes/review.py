@@ -36,8 +36,8 @@ class Review:
     @customer.setter
     def customer(self, customer):
         if not isinstance(customer, Customer):
-            raise TypeError('The customer must be of the type Customer')
+            raise TypeError('customer must be of the type Customer')
         self._customer = customer
-        
-from classes.customer import Customer
-from classes.game import Game
+
+from .customer import Customer
+from .game import Game

@@ -1,13 +1,14 @@
+from .__init__ import CONN, CURSOR
+
 class Customer:
 
     all = []
-    
-    username_list = []
-    
-    def __init__(self, first_name, last_name, username) -> None:
+    def __init__(self, first_name, last_name, username, customer_id = None):
+
         self.first_name = first_name
         self.last_name = last_name
         self.username = username
+        # self.id = id
         type(self).all.append(self)
     
     @property
@@ -19,7 +20,7 @@ class Customer:
         if isinstance(new_first_name, str) and 1 <= len(new_first_name) <=30:
             self._first_name = new_first_name
         else:
-            raise TypeError('First name must be str and cannot be blank!')
+            raise TypeError('The first name must be a string between 1 to 30 characters.')
     
     @property
     def last_name(self):
@@ -30,7 +31,7 @@ class Customer:
         if isinstance(new_last_name, str) and 1 <= len(new_last_name) <=30:
             self._last_name = new_last_name
         else:
-            raise TypeError('Last name must be str and cannot be blank!')
+            raise TypeError('The last name must be a string between 1 to 30 characters.')
     
     @property
     def username(self):
@@ -38,21 +39,36 @@ class Customer:
     
     @username.setter
     def username(self, new_username):
-        if new_username not in type(self).username_list:
+        username_list = [customer.username for customer in type(self).all]
+        if new_username not in username_list:
             if 1 >= len(new_username) or len(new_username) >= 30:
-                raise TypeError('Please make sure your username is between 1 to 30 characters.')
+                raise TypeError('The username must be a string between 1 to 30 characters.')
             else: 
-                type(self).username_list.append(new_username)
+                username_list.append(new_username)
                 self._username = new_username          
         else:
             raise TypeError('This username has been taken, please choose another one.')
-            
         
-    def game_list(self):
-        game_list = []
-        for transaction in Transaction.all:
-            if transaction.game not in game_list:
-                game_list.append(transaction.game)
-        return game_list
+    def save(self):
+        CURSOR.execute("""
+            INSERT INTO customers (first_name, last_name, username)
+            VALUES ( ?, ?, ?)
+        """, (self.first_name, self.last_name, self.username))
+        CONN.commit()
+        self.id = CURSOR.lastrowid
 
-from .transaction import Transaction
+    @classmethod
+    def create_customer(cls, first_name, last_name, username):
+        new_customer = cls(first_name, last_name, username)
+        new_customer.save()
+        return new_customer
+
+    @classmethod
+    def find_by_username(cls, username):
+        CONN.execute("""
+           SELECT * FROM customers
+           WHERE username == ?
+        """, (username,))
+        row = CONN.fetchone()
+        return Customer(row[1], row[2], row[3], row[0]) if row else None
+
