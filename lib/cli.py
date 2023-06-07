@@ -12,7 +12,7 @@ from helpers import (
     review_tab,
     login,
     create_user,
-    exiting_user,
+    existing_user,
     find_by_name,
 )
 
@@ -53,13 +53,11 @@ def main():
                 login()
                 choice_3 = input()
                 if choice_3 == '1':
-                    exiting_user()
+                    existing_user()
                 if choice_3 == '2':
                     create_user()
                 if choice_3 == '3':
-                    review_tab()
-                    #Trying to avoid previous input...
-                    #break
+                    print('')
                 else:
                     print(bold(chalk.red('Please type vaild number.')))
             if choice_2 == '2':
