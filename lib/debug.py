@@ -1,7 +1,7 @@
 
 from classes.review import Review
 from classes.game import Game
-from classes.customer import Customer
+from lib.classes.user import Customer
 
 import ipdb
 
@@ -16,7 +16,7 @@ print(game1.average_score())
 import ipdb
 
 from classes.game import Game
-from classes.customer import Customer
+from lib.classes.user import Customer
 from classes.review import Review
 
 #Game

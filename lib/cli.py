@@ -1,5 +1,5 @@
 from classes.game import Game
-from classes.customer import Customer
+from lib.classes.user import Customer
 from classes.review import Review
 from classes.__init__ import CONN, CURSOR
 from simple_chalk import chalk, bold, underline
@@ -27,8 +27,8 @@ def main():
 
         if choice == '1':
             print('working on ...')
-            # for game in Game.all:
-            #     print(game)
+            for game in Game.all:
+                print(game)
 
         if choice == '2':
             find_by_name()
