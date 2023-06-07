@@ -1,14 +1,15 @@
-import sqlite3
-CONN = sqlite3.connect('database.db')
-CURSOR = CONN.cursor()
-
+from classes.__init__ import CONN, CURSOR
 class Game:
     
-    def __init__(self, title, publisher, year):
+    def __init__(self, title, publisher, year, id=None):
         self.title = title
         self.publisher = publisher
         self.year = year
+        self.id = id
     
+    def __repr__(self):
+        return f"<Game {self.id}. {self.title} | Publisher: {self.publisher} | Year: {self.year}>"
+
     @property
     def title(self):
         return self._title
@@ -49,8 +50,17 @@ class Game:
             SELECT * FROM games;
         """)
         rows = CURSOR.fetchall()
-        return [cls(row[1], row[2], row[3], row[4], row[0]) for row in rows]
+        return [cls(row[1], row[2], row[3], row[0]) for row in rows]
         
+    @classmethod
+    def find_by_game_id(cls, game_id):
+        CURSOR.execute("""
+            SELECT * FROM games
+            WHERE id is ?;
+        """, (game_id, ))
+        row = CURSOR.fetchone()
+        return cls(row[1], row[2], row[3], row[0]) if row else None       
+
     @classmethod
     def find_by_title(cls, title):
         CURSOR.execute("""

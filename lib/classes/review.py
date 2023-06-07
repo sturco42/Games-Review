@@ -1,9 +1,12 @@
+from classes.__init__ import CONN, CURSOR
+
 class Review:
     
-    def __init__(self, rating, game, user):
+    def __init__(self, rating, game_id, user_id, id=None):
         self.rating = rating
-        self.game = game
-        self.user = user
+        self.game_id = game_id
+        self.user_id = user_id
+        self.id = id
 
     @property
     def rating(self):
@@ -18,13 +21,13 @@ class Review:
             
     @property
     def game(self):
-        return self._game
+        return Game.find_by_game_id(self.game_id)
     
     @game.setter
-    def game(self, game):
-        if not isinstance(game, Game):
+    def game(self, game_id):
+        if not isinstance(game_id, int) or not Game.find_by_game_id(game_id):
             raise Exception('The game must have the correctly associeted attribute!.')
-        self._game = game
+        self._game_id = game_id
     
     @property
     def user(self):
@@ -35,6 +38,15 @@ class Review:
         if not isinstance(user, User):
             raise Exception('The user must have the correctly associated attribute!')
         self._user = user
+
+    def save(self):
+        CURSOR.execute("""
+            INSERT INTO reviews (rating, game_id, user_id)
+            VALUES ( ?, ?, ?)
+        """, (self.rating, self.game_id, self.user_id))
+        CONN.commit()
+        self.id = CURSOR.lastrowid
+
 
 from classes.user import User
 from classes.game import Game

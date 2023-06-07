@@ -29,7 +29,7 @@ def login():
     print(underline(chalk.yellow("""
     Please login in to add a review.
     """)))
-    print(chalk.green('1. Exiting User'))
+    print(chalk.green('1. Existing User'))
     print(chalk.green('2. New User'))
     print(chalk.green('3. Back'))
 
@@ -42,7 +42,7 @@ def create_user():
     except Exception as e:
         print(bold(chalk.red('Failed to create user: ')), e)
     
-def exiting_user():
+def existing_user():
     first_name = input(chalk.yellow('Please enter your first name: '))
     last_name = input(chalk.yellow('Please enter your last name: '))
     user = User.find_by_user(first_name, last_name)
