@@ -13,7 +13,7 @@ def menu():
     print(chalk.green('1. All Games'))
     print(chalk.green("2. Find Games by Game's name"))
     print(chalk.green('3. Find Games by Genres'))
-    print(chalk.green('4. New Games for 2023'))
+    print(chalk.green('4. New Games'))
     print(chalk.green('5. Login to add review'))
     print(chalk.green('6. Done'))
 

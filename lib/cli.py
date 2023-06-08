@@ -38,9 +38,7 @@ def main():
             print('working on ...')
 
         if choice == '4':
-            year = input(chalk.yellow('Please enter the year: '))
-            for game in Game.find_by_year(year):
-                print(game)
+            print(Game.find_by_year('2020')) if Game.find_by_year('2020') else print('Sorry, cannot find any game.')
 
         if choice == '5':
             login()
