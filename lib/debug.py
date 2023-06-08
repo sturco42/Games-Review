@@ -18,17 +18,16 @@ import ipdb
 #Game
 
 #Customer
-c1 = User.create_user('John', 'Smith')
-# c2 = User(1, 'Smith') => TypeError: First name cannot be blank or number!
-# c3 = User('John', 'Smith') #=> TypeError: This username has been taken, please choose another one.
-# c4 = User('John', 'Smith') #=> TypeError: This username has been taken, please choose another one.
-
-#Transaction
-
+# c1 = User.create_user('John', 'Smith', 'Johnny No1')
+# c2 = User.create_user('Alice', 'Deep', 'Rabbit')
 
 #Review
-r1 = Review(2, 2, c1.id)
-r1.save()
+# r1 = Review(2, 2, c1.id)
+# r2 = Review(4, 2, c1.id)
+# r3 = Review(1, 2, c2.id)
+# r1.save()
+# r2.save()
+# r3.save()
 if __name__ == '__main__':
     print("HELLO! :) let's debug")
     ipdb.set_trace()

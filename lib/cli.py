@@ -13,57 +13,44 @@ from helpers import (
     login,
     create_user,
     existing_user,
-    find_by_name,
+    game_details,
+    game_details_by_id
 )
 
 def main():
     welcome()
 
-    # choice = 0
-    while True :#choice != 0: 
+    while True :
         time.sleep(2)
         menu()
         choice = input()
-
         if choice == '1':
-            print(' Id    Title    Publisher    Year')
             for game in Game.all():
                 print(game)
+            id = input(chalk.yellow('Please enter the game id to see the details: '))
+            game_details_by_id(id)
 
         if choice == '2':
             title = input(chalk.yellow('Please enter the game title: '))
-            game = Game.find_by_title(title)
-            print(f"""
-                Title: {game.title}
-                Publisher: {game.publisher}
-                Year: {game.year}
-                Ave Rating: {game.ave_rating}
-            """)
+            game_details(title)
 
         if choice == '3':
             print('working on ...')
 
         if choice == '4':
-            print('working on ...')
+            year = input(chalk.yellow('Please enter the year: '))
+            for game in Game.find_by_year(year):
+                print(game)
 
         if choice == '5':
-            review_tab()
+            login()
             choice_2 = input()
             if choice_2 == '1':
-                login()
-                choice_3 = input()
-                if choice_3 == '1':
-                    existing_user()
-                if choice_3 == '2':
-                    create_user()
-                if choice_3 == '3':
-                    print('')
-                else:
-                    print(bold(chalk.red('Please type vaild number.')))
+                existing_user()
             if choice_2 == '2':
-                menu()
-                #Trying to avoid previous input...
-                #break
+                create_user()
+            if choice_2 == '3':
+                print("Back to main menu.")
             else:
                 print(bold(chalk.red('Please type vaild number.')))
         if choice == '6':

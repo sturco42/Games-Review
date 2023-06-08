@@ -14,7 +14,7 @@ def menu():
     print(chalk.green("2. Find Games by Game's name"))
     print(chalk.green('3. Find Games by Genres'))
     print(chalk.green('4. New Games for 2023'))
-    print(chalk.green('5. Add Review to Game'))
+    print(chalk.green('5. Login to add review'))
     print(chalk.green('6. Done'))
 
 def review_tab():
@@ -26,29 +26,57 @@ def review_tab():
 
 def login():
     print(underline(chalk.yellow("""
-    Please login in to add a review.
+    Please login first.
     """)))
     print(chalk.green('1. Existing User'))
     print(chalk.green('2. New User'))
-    print(chalk.green('3. Back'))
 
 def create_user():
     first_name = input(chalk.yellow('Please enter your first name: '))
     last_name = input(chalk.yellow('Please enter your last name: '))
+    username = input(chalk.yellow('Please enter your username: '))
     try:
-        user = User.create_user(first_name, last_name)
+        user = User.create_user(first_name, last_name, username)
         print(user)
+        add_review(user.id)
     except Exception as e:
         print(bold(chalk.red('Failed to create user: ')), e)
     
 def existing_user():
-    first_name = input(chalk.yellow('Please enter your first name: '))
-    last_name = input(chalk.yellow('Please enter your last name: '))
-    user = User.find_by_user(first_name, last_name)
-    print(user) if user else print(bold(chalk.red('No user found')))
+    username = input(chalk.yellow('Please enter your username: '))
+    try:
+        user = User.find_by_user(username)
+        print(user)
+        add_review(user.id)
+    except Exception as e:
+        print(bold(chalk.red('No user found!')))
 
-def find_by_name():
-    name = input(chalk.yellow('Please type the game name.'))
-    filtered = [game for game in Game.all if game.name is name]
-    for game in filtered:
-        print(game)
+def game_details(title):
+    game = Game.find_by_title(title)
+    try:
+        print(f"""
+            Title: {game.title}1
+            Publisher: {game.publisher}
+            Year: {game.year}
+            Ave Rating: {Game.ave_rating(game.id)}
+        """)
+    except:
+        print(bold(chalk.red('There is no such game.')))
+
+def game_details_by_id(id):
+    game = Game.find_by_game_id(id)
+    try:
+        print(f"""
+            Title: {game.title}
+            Publisher: {game.publisher}
+            Year: {game.year}
+            Ave Rating: {Game.ave_rating(id)}
+        """)
+    except:
+        print(bold(chalk.red('There is no such game.')))
+
+def add_review(id):
+    game_id = input(chalk.yellow('What is the game id: '))
+    rating = input(chalk.yellow('Please rate from 1-10: '))
+    Review.create_review(int(rating), game_id, id)
+    

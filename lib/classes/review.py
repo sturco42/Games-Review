@@ -47,6 +47,12 @@ class Review:
         CONN.commit()
         self.id = CURSOR.lastrowid
 
+    @classmethod
+    def create_review(cls, rating, game_id, user_id):
+        new_review = cls( rating, game_id, user_id)
+        new_review.save()
+        return new_review
+
 
 from classes.user import User
 from classes.game import Game
