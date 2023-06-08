@@ -50,16 +50,12 @@ def main():
             if choice_2 == '3':
                 print("Back to main menu.")
             else:
-                print(bold(chalk.red('Please type vaild number.')))
+                print(bold(chalk.red('Please type cool number.')))
         if choice == '6':
             print("See you next time!")
             break
         else:
-            print(bold(chalk.red('Please type vaild number.')))
-
-
-        
-
+            print(bold(chalk.red('Please type valid number.')))
 
 
 if __name__ == '__main__':

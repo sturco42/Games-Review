@@ -60,7 +60,7 @@ class Game:
             WHERE id is ?;
         """, (game_id, ))
         row = CURSOR.fetchone()
-        return cls(row[1], row[2], row[0]) if row else None       
+        return cls(row[1], row[2], row[3], row[0]) if row else None       
 
     @classmethod
     def find_by_title(cls, title):
