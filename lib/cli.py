@@ -34,13 +34,13 @@ def main():
             title = input(chalk.yellow('Please enter the game title: '))
             game_details(title)
 
-        if choice == '3':
-            print('working on ...')
+        # if choice == '3':
+        #     print('working on ...')
 
-        if choice == '4':
+        if choice == '3':
             print(Game.find_by_year('2020')) if Game.find_by_year('2020') else print('Sorry, cannot find any game.')
 
-        if choice == '5':
+        if choice == '4':
             login()
             choice_2 = input()
             if choice_2 == '1':
@@ -51,7 +51,7 @@ def main():
                 print("Back to main menu.")
             else:
                 print(bold(chalk.red('Please type cool number.')))
-        if choice == '6':
+        if choice == '5':
             print("See you next time!")
             break
         else:

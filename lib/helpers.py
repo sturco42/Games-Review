@@ -11,11 +11,11 @@ def menu():
     Please type in the number corresponding to the choice.
     """)))
     print(chalk.green('1. All Games'))
-    print(chalk.green("2. Find Games by Game's name"))
-    print(chalk.green('3. Find Games by Genres'))
-    print(chalk.green('4. New Games'))
-    print(chalk.green('5. Login to add review'))
-    print(chalk.green('6. Done'))
+    print(chalk.green("2. Search Games"))
+    # print(chalk.green('3. Find Games by Genres'))
+    print(chalk.green('3. New Releases'))
+    print(chalk.green('4. Add Review'))
+    print(chalk.green('5. Done'))
 
 def review_tab():
     print(underline(chalk.yellow("""
@@ -55,7 +55,7 @@ def game_details(title):
     game = Game.find_by_title(title)
     try:
         print(f"""
-            Title: {game.title}1
+            Title: {game.title}
             Publisher: {game.publisher}
             Year: {game.year}
             Ave Rating: {Game.ave_rating(game.id)}
