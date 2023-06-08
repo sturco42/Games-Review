@@ -1,4 +1,3 @@
-import re
 from simple_chalk import chalk, bold, underline
 from classes.game import Game
 from classes.user import User
