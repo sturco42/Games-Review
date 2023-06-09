@@ -19,9 +19,8 @@ from helpers import (
 
 def main():
     welcome()
-
+    time.sleep(2)
     while True :
-        time.sleep(2)
         menu()
         choice = input()
         if choice == '1':
@@ -30,28 +29,28 @@ def main():
             id = input(chalk.yellow('Please enter the game id to see the details: '))
             game_details_by_id(id)
 
-        if choice == '2':
+        elif choice == '2':
             title = input(chalk.yellow('Please enter the game title: '))
             game_details(title)
 
         # if choice == '3':
         #     print('working on ...')
 
-        if choice == '3':
+        elif choice == '3':
             print(Game.find_by_year('2020')) if Game.find_by_year('2020') else print('Sorry, cannot find any game.')
 
-        if choice == '4':
+        elif choice == '4':
             login()
             choice_2 = input()
             if choice_2 == '1':
                 existing_user()
-            if choice_2 == '2':
+            elif choice_2 == '2':
                 create_user()
-            if choice_2 == '3':
+            elif choice_2 == '3':
                 print("Back to main menu.")
             else:
                 print(bold(chalk.red('Please type cool number.')))
-        if choice == '5':
+        elif choice == '5':
             print("See you next time!")
             break
         else:

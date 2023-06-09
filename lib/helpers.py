@@ -55,11 +55,11 @@ def game_details(title):
     game = Game.find_by_title(title)
     try:
         print(f"""
-            Title: {game.title}
-            Publisher: {game.publisher}
-            Year: {game.year}
-            Ave Rating: {Game.ave_rating(game.id)}
-        """)
+                Title: {game.title}
+                Publisher: {game.publisher}
+                Year: {game.year}
+                Ave Rating: {Game.ave_rating(game.id)}
+            """)
     except:
         print(bold(chalk.red('There is no such game.')))
 

@@ -73,7 +73,7 @@ class User:
 
     @classmethod
     def find_by_user(cls, username):
-        CONN.execute("""
+        CURSOR.execute("""
            SELECT * FROM users
            WHERE username == ?
         """, (username, ))
