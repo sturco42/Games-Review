@@ -4,7 +4,7 @@ from classes.user import User
 from classes.review import Review
 
 def welcome():
-    print(bold(chalk.red("Welcome to 'Game Reviewz'!")))
+    print(bold(chalk.red("Welcome to Game Reviews!")))
 
 def menu():
     print(underline(chalk.yellow("""
