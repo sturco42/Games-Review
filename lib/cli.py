@@ -39,10 +39,10 @@ def main():
         elif choice == '3':
             print(Game.find_by_year('2020')) if Game.find_by_year('2020') else print('Sorry, cannot find any game.')
 
-        elif choice == '6':
+        elif choice == '4':
             Game.highest_rated_games()
         
-        elif choice == '4':
+        elif choice == '5':
             login()
             choice_2 = input()
             if choice_2 == '1':
@@ -53,7 +53,7 @@ def main():
                 print("Back to main menu.")
             else:
                 print(bold(chalk.red('Please type cool number.')))
-        elif choice == '5':
+        elif choice == '6':
             print("See you next time!")
             break
         else:

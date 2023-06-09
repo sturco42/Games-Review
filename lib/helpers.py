@@ -11,11 +11,11 @@ def menu():
     Please type in the number corresponding to the choice.
     """)))
     print(chalk.green('1. All Games'))
-    print(chalk.green("2. Search Games"))
-    # print(chalk.green('3. Find Games by Genres'))
+    print(chalk.green('2. Search Games'))
     print(chalk.green('3. New Releases'))
-    print(chalk.green('4. Add Review'))
-    print(chalk.green('5. Done'))
+    print(chalk.green('4. Popular Games'))
+    print(chalk.green('5. Add Review'))
+    print(chalk.green('6. Done'))
 
 def review_tab():
     print(underline(chalk.yellow("""
