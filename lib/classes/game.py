@@ -83,13 +83,10 @@ class Game:
                 average_rating = Game.average_rating_no_print(id)
                 if average_rating != None:
                     game_ratings.append((id, average_rating))
-            
             game_ratings.sort(reverse=True, key=mySortFunc)
             top_10_games = game_ratings[0:10]
             for id, rating in top_10_games:
                 game_details_by_id(id)
 
-from classes.user import User
-from classes.review import Review
 from statistics import mean
 from helpers import (game_details_by_id)
