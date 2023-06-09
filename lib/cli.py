@@ -30,7 +30,13 @@ def main():
             title = input(chalk.yellow('Please enter the game title: '))
             game_details(title)
         elif choice == '3':
-            print(Game.find_by_year('2020')) if Game.find_by_year('2020') else print('Sorry, cannot find any game.')
+            if Game.find_by_year('2020'):
+                for game in Game.find_by_year('2020'):
+                    print (game)
+                id = input(chalk.yellow('Please enter the game id to see the details: '))
+                game_details_by_id(id)
+            else: 
+                print('Sorry, cannot find any game.')
         elif choice == '4':
             Game.highest_rated_games()
         elif choice == '5':
@@ -43,12 +49,12 @@ def main():
             elif choice_2 == '3':
                 print("Back to main menu.")
             else:
-                print(bold(chalk.red('Please type cool number.')))
+                print(bold(chalk.red('Please type a valid number.')))
         elif choice == '6':
             print("See you next time!")
             break
         else:
-            print(bold(chalk.red('Please type valid number.')))
+            print(bold(chalk.red('Please type a valid number.')))
 
 if __name__ == '__main__':
     main()
