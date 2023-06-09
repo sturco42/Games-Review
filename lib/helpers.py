@@ -79,4 +79,3 @@ def add_review(id):
     game_id = input(chalk.yellow('What is the game id: '))
     rating = input(chalk.yellow('Please rate from 1-10: '))
     Review.create_review(int(rating), game_id, id)
-    

@@ -120,7 +120,6 @@ class Game:
             
             game_ratings.sort(reverse=True, key=mySortFunc)
             top_10_games = game_ratings[0:10]
-            
             for id, rating in top_10_games:
                 game_details_by_id(id)
                 pass

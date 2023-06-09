@@ -53,6 +53,5 @@ class Review:
         new_review.save()
         return new_review
 
-
 from classes.user import User
 from classes.game import Game
