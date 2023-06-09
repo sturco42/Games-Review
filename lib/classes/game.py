@@ -11,40 +11,6 @@ class Game:
     def __repr__(self):
         return f"<Game {self.id}. {self.title} | Publisher: {self.publisher} | Year: {self.year}>"
 
-    # @property
-    # def title(self):
-    #     return self._title
-    
-    # @title.setter
-    # def title(self, title):
-    #     if not isinstance(title, str) or 1 >= len(title) >= 50:
-    #         raise Exception('The title must be a string between 1 and 50 characters!')
-    #     self._title = title
-        
-    # @property
-    # def publisher(self):
-    #     return self._publisher
-    
-    # @publisher.setter
-    # def publisher(self, publisher):
-    #     if not isinstance(publisher, str) or 1 >= len(publisher) >= 30:
-    #         raise Exception('The publisher must be a string between 1 and 30 characters!')
-    #     self._publisher = publisher
-        
-    # @property
-    # def year(self):
-    #     return self._year
-    
-    # @year.setter
-    # def year(self, year):
-    #     if not isinstance(year, int) or 1900 >= year >= 2300:
-    #         raise Exception('The year must be an integer between 1900 and 2300')
-    #     self._year = year
-    
-    # def average_score(self):
-    #         scores = [review.stars for review in Review.all if review.game is self]
-    #         return mean(scores) if len(scores) else 'N/A'
-    
     @classmethod
     def all(cls):
         CURSOR.execute("""
