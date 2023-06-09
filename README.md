@@ -110,12 +110,10 @@ Please enter the game title: Super Mario World
   Please rate from 1-10: 8
 ```
 * Exit CLI
-<br />
 
 ## Contributing
 ---
 Open to pull requests. For major changes, please open an issue first to discuss what you would like to change.  
-<br />
 
 ## Authors and Acknowledgements
 ---
@@ -123,7 +121,6 @@ Open to pull requests. For major changes, please open an issue first to discuss 
 * [sturco42](https://github.com/sturco42)
 * [RRZhai](https://github.com/RRZhai)
 * [Blujay0](https://github.com/Blujay0)  
-<br />
 
 ## License
 ---
