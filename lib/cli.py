@@ -39,6 +39,9 @@ def main():
         elif choice == '3':
             print(Game.find_by_year('2020')) if Game.find_by_year('2020') else print('Sorry, cannot find any game.')
 
+        elif choice == '6':
+            Game.highest_rated_games()
+        
         elif choice == '4':
             login()
             choice_2 = input()
