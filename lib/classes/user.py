@@ -44,7 +44,6 @@ class User:
         else:
             raise Exception('The last name must be a string between 1 to 30 characters.')
 
-            
     def save(self):
         CURSOR.execute("""
             INSERT INTO users (first_name, last_name, username)

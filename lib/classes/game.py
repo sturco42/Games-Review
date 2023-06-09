@@ -11,40 +11,6 @@ class Game:
     def __repr__(self):
         return f"<Game {self.id}. {self.title} | Publisher: {self.publisher} | Year: {self.year}>"
 
-    # @property
-    # def title(self):
-    #     return self._title
-    
-    # @title.setter
-    # def title(self, title):
-    #     if not isinstance(title, str) or 1 >= len(title) >= 50:
-    #         raise Exception('The title must be a string between 1 and 50 characters!')
-    #     self._title = title
-        
-    # @property
-    # def publisher(self):
-    #     return self._publisher
-    
-    # @publisher.setter
-    # def publisher(self, publisher):
-    #     if not isinstance(publisher, str) or 1 >= len(publisher) >= 30:
-    #         raise Exception('The publisher must be a string between 1 and 30 characters!')
-    #     self._publisher = publisher
-        
-    # @property
-    # def year(self):
-    #     return self._year
-    
-    # @year.setter
-    # def year(self, year):
-    #     if not isinstance(year, int) or 1900 >= year >= 2300:
-    #         raise Exception('The year must be an integer between 1900 and 2300')
-    #     self._year = year
-    
-    # def average_score(self):
-    #         scores = [review.stars for review in Review.all if review.game is self]
-    #         return mean(scores) if len(scores) else 'N/A'
-    
     @classmethod
     def all(cls):
         CURSOR.execute("""
@@ -87,12 +53,44 @@ class Game:
             WHERE game_id is ?;
         """, (id, ))
         rows = CURSOR.fetchall()
-        if rows :
+        if rows:
             return mean([list(row)[1] for row in rows])
         else:
-            print('There is no rating for this game yet')         
+            print('There is no rating for this game yet')
 
+    @classmethod
+    def average_rating_no_print(cls, id):
+        CURSOR.execute("""
+            SELECT * FROM reviews
+            WHERE game_id is ?;
+        """, (id, ))
+        rows = CURSOR.fetchall()
+        if rows:
+            return mean([list(row)[1] for row in rows])
+            
+    @classmethod
+    def highest_rated_games(cls):
+        CURSOR.execute("""
+            SELECT id FROM games
+        """)
+        rows = CURSOR.fetchall()
+        def mySortFunc(gameRating):
+            return gameRating[1]
+        if rows:
+            game_ratings = []
+            for row in rows:
+                id = row[0]
+                average_rating = Game.average_rating_no_print(id)
+                if average_rating != None:
+                    game_ratings.append((id, average_rating))
+            
+            game_ratings.sort(reverse=True, key=mySortFunc)
+            top_10_games = game_ratings[0:10]
+            for id, rating in top_10_games:
+                game_details_by_id(id)
+                pass
 
 from classes.user import User
 from classes.review import Review
 from statistics import mean
+from helpers import (game_details_by_id)
